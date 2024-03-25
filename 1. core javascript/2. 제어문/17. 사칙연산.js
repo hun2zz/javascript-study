@@ -29,6 +29,10 @@ while (true) {
 
   let wjdekq = +prompt(`${qnum}. ${randomNum + plusMinus + randomNum2} = ??`);
   qnum++;
+  if (wjdekq === 0) {
+    alert(`게임을 종료합니다.`);
+    break;
+  }
   if (wjdekq === result) {
     alert(`정답입니다!!`);
     sum++;
