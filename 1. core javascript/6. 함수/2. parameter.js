@@ -24,3 +24,17 @@ function sayHello(language) {
   }
 }
 sayHello(`한국어`);
+
+// 매개변수가 없는 함수
+function selectRandomPet() {
+  let pets = [`멍멍이`, `야옹이`, `짹짹이`, `고라니`, `노루루`];
+  let rn = Math.floor(Math.random() * pets.length);
+  return pets[rn];
+}
+
+let r1 = selectRandomPet();
+let r2 = selectRandomPet();
+let r3 = selectRandomPet();
+console.log(r1);
+console.log(r2);
+console.log(r3);
