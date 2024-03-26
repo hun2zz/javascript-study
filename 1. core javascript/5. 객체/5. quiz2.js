@@ -52,15 +52,15 @@ while (nologin) {
       exitidlogin = true;
     }
 
-  userpass = prompt(`비밀번호를 입력해주세요.`);
+    userpass = prompt(`비밀번호를 입력해주세요.`);
 
-  if (userInfo.userList[indexnum].password === userpass) {
-    alert(`로그인 성공!!`);
-    nologin = false;
-  } else {
-    alert(`비밀번호가 틀렸습니다.`);
-    continue;
+    if (userInfo.userList[indexnum].password === userpass) {
+      alert(`로그인 성공!!`);
+      nologin = false;
+    } else {
+      alert(`비밀번호가 틀렸습니다.`);
+      continue;
+    }
   }
 }
-
 alert(`${userInfo.userList[indexnum].username}님 환영합니다!`);
