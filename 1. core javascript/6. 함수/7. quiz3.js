@@ -32,3 +32,5 @@ console.log(`result2: ${result2}`);
 // 단, 0은 짝수취급
 var result3 = isEven(0);
 console.log(`result3: ${result3}`);
+
+// /
