@@ -73,7 +73,7 @@ console.log(`===================1`);
 
 const filterCity = traders.map((user) => user.trader.city);
 let objectqe = {};
-filterCity.forEach((user) => objectqe[user] = true);
+filterCity.forEach((user) => (objectqe[user] = true));
 const arr = Object.keys(objectqe);
 
 console.log(arr);
@@ -82,6 +82,7 @@ console.log(`===================2`);
 const filterCityTrader = traders
   .filter((user) => user.trader.city === `대전`)
   .map((user) => user.trader);
+
 console.log(filterCityTrader);
 console.log(`===================3`);
 
