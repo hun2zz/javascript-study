@@ -154,12 +154,12 @@ console.log(`===================gpt 4`);
 // 5. **거래액이 700000원 이상인 거래를 모두 찾아, 해당 거래의 연도별로 분류해주세요.
 //  결과는 `{2022: [...거래정보], 2023: [...거래정보]}`와 같은 형태가 되어야 합니다.**
 const countBytrade = traders
-  .filter((n) => n.trader.city >= 700000)
+  .filter((n) => n.value >= 700000)
   .reduce((count, win) => {
     if (win.trader.city in count) {
-      count[win.trader.city] = win.trader.city.push;
+      count[win.trader.city].push(win);
     } else {
-      count[win.trader.city] = win.value;
+      count[win.trader.city] = [win];
     }
     return count;
   }, {});
