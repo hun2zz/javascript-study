@@ -208,9 +208,48 @@ const result = traders.reduce((acc, trs) => {
   // 연도별 최대 거래 횟수 찾기
   const yearMaxkey = `max_${trs.year}`;
   if (!acc[yearMaxkey] || acc[key] < acc[yearMaxkey.count]) {
-    acc[yearMaxkey] = {name : trs.trader.name, count : acc[key]}
+    acc[yearMaxkey] = { name: trs.trader.name, count: acc[key] };
   }
   return acc;
 }, {});
 
 console.log(result);
+// 8. **모든 거래 중 거래액이 중간값인 거래의 정보(거래자 이름, 도시, 연도, 거래액)를 출력해주세요.**
+// 거래액 오름차로 정렬
+// 정렬은 원본을 손상시킨다. - 안전하게 하려면 복사 후 정렬
+console.log(`================================`);
+const sortedTrader = traders.slice().sort((a, b) => a.value - b.value);
+// console.log(sortedTrader);
+// 중간 값 거래 정보 찾기
+
+// 배열의 요소 수가 홀 수면 정확한 중간 인덱스가 나오지만,
+// 짝수면 중앙 두 값의 평균을 중간값으로 한다.
+const middleIndex = Math.floor(sortedTrader.length / 2); // 가운데 인덱스를 찾기
+let middleTradeInfo;
+if (sortedTrader.length % 2 === 1) {
+  // 배열의 요소 수가 홀수인 경우
+  //정확한 중간 인덱스를 지정해주면 된다.
+  middleTradeInfo = sortedTrader[middleIndex];
+} else {
+  // 값이 짞수인 경우
+  middleTradeInfo = [sortedTrader[middleIndex - 1], sortedTrader[middleIndex]];
+}
+// 9. **각 도시에서 진행된 거래의 수를 계산해주세요. 결과는 `{도시이름: 거래수}` 형태의 객체여야 합니다.**
+
+console.log(`================================`);
+
+const cityValue = traders.reduce((acc, trs) => {
+  if (!acc[trs.trader.city]) {
+    acc[trs.trader.city] = 1;
+  } else {
+    acc[trs.trader.city]++;
+  }
+  return acc;
+}, {});
+
+console.log(cityValue);
+// 10. **거래액을 기준으로 모든 거래를 오름차순으로 정렬한 후, 정렬된 리스트를 출력해주세요.
+// 각 거래 정보는 거래자 이름, 도시, 연도, 거래액을 포함해야 합니다.**
+console.log(`================================`);
+const sortedTrs = traders.slice().sort((a, b) => a.value - b.value);
+console.log(sortedTrs);
