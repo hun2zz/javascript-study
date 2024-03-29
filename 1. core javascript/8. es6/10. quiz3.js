@@ -238,11 +238,12 @@ if (sortedTrader.length % 2 === 1) {
 
 console.log(`================================`);
 
-const cityValue = traders.reduce((acc, trs) => {
-  if (!acc[trs.trader.city]) {
-    acc[trs.trader.city] = 1;
+const cityValue = traders.reduce((acc, { trader }) => {
+  const { city } = trader;
+  if (!acc[city]) {
+    acc[city] = 1;
   } else {
-    acc[trs.trader.city]++;
+    acc[city]++;
   }
   return acc;
 }, {});
