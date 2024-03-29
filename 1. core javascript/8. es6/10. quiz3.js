@@ -165,3 +165,52 @@ const countBytrade = traders
   }, {});
 console.log(countBytrade);
 console.log(`===================gpt 5`);
+
+// 6. **각 거래자별로 그들이 진행한 거래의 평균 거래액을 계산해주세요.
+// 결과는 `{거래자이름: 평균거래액}` 형태의 객체가 되어야 합니다.**
+/*
+    {
+      '김철수`: {
+        `총액`: 3000000,
+        `거래횟수`: 5
+      },
+    }
+  */
+const trsDAtaByName = traders.reduce((averageList, trs) => {
+  //평균을 구하려면 각자의 거래액 총합들과 거래 횟수를 구해야 한다.
+  const name = trs.trader.name;
+  if (!averageList[name]) {
+    // 이 사람 이름이 처음 등장했으면,
+    averageList[name] = { total: trs.value, count: 1 };
+  } else {
+    averageList[name].total += trs.value;
+    averageList[name].count++;
+  }
+  return averageList;
+}, {});
+// console.log(trsDAtaByName);
+//평균 구하기 진행.
+for (const key in trsDAtaByName) {
+  trsDAtaByName[key] = trsDAtaByName[key].total / trsDAtaByName[key].count;
+}
+console.log(trsDAtaByName);
+console.log(`===================gpt 6`);
+// 7. **2022년과 2023년 각각에서 가장 많은 거래를 한 거래자의 이름과 그 거래 횟수를 출력해주세요.**
+const result = traders.reduce((acc, trs) => {
+  //연도별 거래자 거래 횟수 집계
+  const key = `${trs.year}_${trs.trader.name}`;
+  if (!acc[key]) {
+    acc[key] = 1;
+  } else {
+    acc[key]++;
+  }
+
+  // 연도별 최대 거래 횟수 찾기
+  const yearMaxkey = `max_${trs.year}`;
+  if (!acc[yearMaxkey] || acc[key] < acc[yearMaxkey.count]) {
+    acc[yearMaxkey] = {name : trs.trader.name, count : acc[key]}
+  }
+  return acc;
+}, {});
+
+console.log(result);
