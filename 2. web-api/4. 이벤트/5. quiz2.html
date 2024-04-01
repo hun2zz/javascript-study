@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .menu ul {
+        margin: 0;
+        list-style: none;
+        padding-left: 20px;
+        display: none;
+      }
+      .menu .title {
+        font-size: 18px;
+        cursor: pointer;
+      }
+      .menu .title::before {
+        content: "▶ ";
+        font-size: 80%;
+        color: green;
+      }
+      .menu.open .title::before {
+        content: "▼ ";
+      }
+      .menu.open ul {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- #lunches.menu>span.title+ul>li*4 -->
+    <div id="lunches" class="menu">
+      <span class="title">추천 메뉴(Click Me!)</span>
+      <ul>
+        <li>돈까스</li>
+        <li>군만두</li>
+        <li>볶음밥</li>
+        <li>마파두부</li>
+      </ul>
+    </div>
+    <script>
+      const $title = document.querySelector(`.title`);
+      const $menu = document.querySelector(`.menu`);
+      const showMenu = () => {
+        if ($menu.classList.contains(`open`)) {
+          $menu.classList.remove("open");
+        } else {
+          $menu.classList.add("open");
+          // $mnu.classList.add(`.menu .title::before`);
+        }
+      };
+      $title.addEventListener(`click`, showMenu);
+
+      // const helloHandler = () => {
+      //   if ($menu.style.display = '0';) {
+      //     $btn.textContent = `텍스트 숨기기!!`;
+      //     $text.classList.remove("disappear");
+      //   } else {
+      //     $btn.textContent = `텍스트 보이기!!`;
+      //     $text.classList.add("disappear");
+      //   }
+      // };
+      // $btn.addEventListener(`click`, helloHandler);
+    </script>
+  </body>
+</html>

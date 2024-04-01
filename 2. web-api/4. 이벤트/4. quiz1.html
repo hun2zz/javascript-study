@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .disappear {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="hider">텍스트 숨기기!!</button>
+
+    <div class="text">안녕하세요~~</div>
+
+    <script>
+      const $btn = document.getElementById(`hider`);
+      const $text = document.querySelector(`.text`);
+      const helloHandler = () => {
+        if ($text.classList.contains(`disappear`)) {
+          $btn.textContent = `텍스트 숨기기!!`;
+          $text.classList.remove("disappear");
+        } else {
+          $btn.textContent = `텍스트 보이기!!`;
+          $text.classList.add("disappear");
+        }
+      };
+      $btn.addEventListener(`click`, helloHandler);
+      // $btn.removeEventListener(`click`, helloHandler);
+    </script>
+  </body>
+</html>
