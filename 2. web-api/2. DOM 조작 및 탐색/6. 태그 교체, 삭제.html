@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="fruits">
+      <li>사과</li>
+      <li>바나나</li>
+      <li>포도</li>
+    </ul>
+
+    <script>
+      const $ul = document.getElementById(`fruits`);
+      const [$apple, $banana, $grape] = [...$ul.children];
+
+      //새 노드 생성
+      const $newDiv1 = document.createElement(`li`);
+      $newDiv1.textContent = `빡스`;
+
+      //노드 교체 : replaceChild(new, old);
+      $ul.replaceChild($newDiv1, $banana);
+
+      //노드 삭제:
+      $ul.removeChild($apple);
+
+      //자식노드 전체 삭제
+      // $ul.innerHTML = ``; //전체 삭제
+      [...$ul.children].forEach(($f) => {
+        $ul.removeChild($f);
+      });
+    </script>
+  </body>
+</html>
