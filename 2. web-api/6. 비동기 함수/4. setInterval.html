@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p class="msg"></p>
+    <p id="clock"></p>
+
+    <script>
+      const $msg = document.querySelector(`.msg`);
+      const $clock = document.getElementById(`clock`);
+
+      //현재 시간 가져오기.
+
+      setInterval(() => {
+        const now = new Date();
+        $clock.textContent = now.toLocaleTimeString();
+      }, 1000);
+
+      // setInterval(() => {
+      //   $msg.textContent += `안뇽~~\n`; // 비동기 이기 때문에 밑에서 for문을 실행해도 for문은 따로 돌게 된다.
+      // }, 500);                           // 시계 만들 때 많이 씀.
+
+      for (let i = 0; i < 5; i++) {
+        console.log(i);
+      }
+    </script>
+  </body>
+</html>
