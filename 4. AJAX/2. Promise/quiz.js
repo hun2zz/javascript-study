@@ -17,6 +17,7 @@ const renderMovies = (movieList) => {
     $li.querySelector(".inner .year").textContent = movie.year + "년";
     $li.querySelector(".inner .rating").textContent = movie.rating + "점";
     $li.querySelector(".img-box > img").src = movie.large_cover_image;
+    $li.querySelector(".movie").dataset.movieId = movie.id;
     $movieUl.appendChild($li);
   });
 };
@@ -29,6 +30,7 @@ fetch(URL)
   });
 
 document.getElementById("s_year").addEventListener("click", (e) => {
+  e.preventDefault();
   fetch(sortYear)
     .then((res) => res.json())
     .then((json) => {
@@ -38,6 +40,7 @@ document.getElementById("s_year").addEventListener("click", (e) => {
 });
 
 document.getElementById("s_like").addEventListener("click", (e) => {
+  e.preventDefault();
   fetch(sortLike)
     .then((res) => res.json())
     .then((json) => {
@@ -47,10 +50,22 @@ document.getElementById("s_like").addEventListener("click", (e) => {
 });
 
 document.getElementById("s_rate").addEventListener("click", (e) => {
+  e.preventDefault();
   fetch(sortDownload)
     .then((res) => res.json())
     .then((json) => {
       console.log(json.data.movies);
       renderMovies(json.data.movies);
+    });
+});
+
+const $movie = document.querySelector(".movie-list");
+$movie.addEventListener("click", (e) => {
+  if (!e.target.matches(".movie-list .movie *")) return;
+  const movieId = e.target.closest(".movie").dataset.movieId;
+  fetch(`https://yts.mx/api/v2/movie_details.json?movie-id=${movieId}`)
+    .then((res) => res.json())
+    .then((json) => {
+      console.log(json);
     });
 });
