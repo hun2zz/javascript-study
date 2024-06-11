@@ -37,6 +37,10 @@ button {
   font: inherit;
   cursor: pointer;
 }
+#app {
+  width: 50%;
+  margin: 0 auto;
+}
 
 button:focus {
   outline: none;

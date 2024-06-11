@@ -1,15 +1,13 @@
 class ProductItem {
-
   constructor(prod) {
     this.prod = prod;
   }
 
   render() {
-
     const { title, price, image, desc } = this.prod;
 
-    const $prodLi = document.createElement('li');
-    $prodLi.classList.add('product-item');
+    const $prodLi = document.createElement("li");
+    $prodLi.classList.add("product-item");
     $prodLi.innerHTML = `
       <div>
         <img src="${image}" alt="${title}">
@@ -21,6 +19,11 @@ class ProductItem {
         </div>
       </div>
     `;
+    const $btn = $prodLi.querySelector("button");
+    $btn.addEventListener("click", (e) => {
+      console.log(title);
+      console.log("버튼 클릭");
+    });
 
     return $prodLi;
   }
