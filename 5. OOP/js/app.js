@@ -1,5 +1,7 @@
-// 상품 데이터
 import Product from "./components/Product.js";
+import ProductItem from "./components/ProductItem.js";
+
+// 상품 데이터
 const p1 = new Product(
   "에어팟",
   200000,
@@ -25,10 +27,10 @@ const productList = {
       "https://img-cf.kurly.com/shop/data/goods/1630556476801z0.jpg"
     ),
     new Product(
-      "쿼터파운드 치즈버거",
+      "쿼터파운더 치즈버거",
       10000,
       "쿼팥치 먹고싶다",
-      "https://img-cf.kurly.com/shop/data/goods/1630556476801z0.jpg"
+      "https://s7d1.scene7.com/is/image/mcdonalds/202201_3426-005_DoubleQuarterPounderwithCheese_832x472:1-3-product-tile-desktop?wid=765&hei=472&dpr=off"
     ),
   ],
 
@@ -38,21 +40,8 @@ const productList = {
     // 반복해서 li태그를 생성
     // console.log('products: ', this.products);
     this.products.forEach((prod) => {
-      const $prodLi = document.createElement("li");
-      $prodLi.classList.add("product-item");
-      $prodLi.innerHTML = `
-      <div>
-        <img src="${prod.image}" alt="${prod.title}">
-        <div class="product-item__content">
-          <h2>${prod.title}</h2>
-          <h3>${prod.price}원</h3>
-          <p>${prod.desc}</p>
-          <button>담기</button>
-        </div>
-      </div>
-    `;
-
-      $prodList.appendChild($prodLi);
+      const product = new ProductItem(prod);
+      $prodList.appendChild(product.render());
     });
 
     // div#app에 ul추가
